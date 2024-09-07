@@ -1,7 +1,5 @@
-import random
 import pygame 
 import sys
-from pygame.locals import *
 
 # Step 1: Initiate Pygame board
 # Step 2: Draw Input boxes
@@ -15,14 +13,14 @@ class FlamesGameBoard:
         self.screen = game_screen
         self.base_font = pygame.font.Font(None, 22)
         self.title_text = " F - Friendship  L - Love    A - Affection   M - Marriage    E - Enemy   S - Siblings"
-        self.title = { "rect": pygame.Rect(self.screen.get_width()/28, self.screen.get_width()/18, self.screen.get_width()/2, 32), "color": pygame.Color('lightsteelblue3'), "text": self.title_text, "active": False}
+        self.title = { "rect": pygame.Rect(self.screen.get_width()/28, self.screen.get_width()/18,self.screen.get_width()/2, 32),"color": pygame.Color('lightsteelblue3'),"text": self.title_text,"active": False}
         self.input_text_boxes = [
-            {"rect": pygame.Rect(self.screen.get_width()/6, self.screen.get_width()/6, 140, 32), "color": pygame.Color('lightskyblue3'), "text": "Your first name", "active": False},
-            {"rect": pygame.Rect(self.screen.get_width()/2, self.screen.get_width()/6, 140, 32), "color": pygame.Color('chartreuse4'), "text": "Friend first name", "active": False}
+            {"rect": pygame.Rect(self.screen.get_width()/6,self.screen.get_width()/6, 140, 32),"color": pygame.Color('lightskyblue3'),"text": "Your first name","active": False},
+            {"rect": pygame.Rect(self.screen.get_width()/2,self.screen.get_width()/6, 140, 32),"color": pygame.Color('chartreuse4'),"text": "Friend first name","active": False}
         ]
-        self.play_button = {"rect": pygame.Rect(self.screen.get_width()/3, self.screen.get_width()/4, 140, 32), "color": pygame.Color('lightseagreen'), "text": "Click here to see the result", "active": False}
+        self.play_button = {"rect": pygame.Rect(self.screen.get_width()/3,self.screen.get_width()/4, 140, 32),"color": pygame.Color('lightseagreen'),"text": "Click here to see the result","active": False}
 
-        self.final_result_box = {"rect": pygame.Rect(self.screen.get_width()/8, self.screen.get_width()/2.8, 200, 50), "color": pygame.Color('lightsteelblue3'), "text": "Result", "active": False}
+        self.final_result_box = {"rect": pygame.Rect(self.screen.get_width()/8,self.screen.get_width()/2.8, 200, 50),"color": pygame.Color('lightsteelblue3'),"text": "Result","active": False}
 
     # Get the final result of the game with the names
     def playFlames(self, your_name, friend_name):
@@ -107,17 +105,17 @@ class FlamesGameBoard:
     # Draw Board Title - title should be inactive
     def draw_title(self):
         #pygame.draw.rect(self.screen, self.title["color"], self.title["rect"], 2)
-        title_text_surface = self.base_font.render(self.title["text"], True, (255, 255, 255))
-        self.screen.blit(title_text_surface, (self.title["rect"].x + 5, self.title["rect"].y + 5))
-        self.title["rect"].w = max(100, title_text_surface.get_width() + 10)
+        title_text_surface = self.base_font.render(self.title["text"],True,(255, 255, 255))
+        self.screen.blit(title_text_surface,(self.title["rect"].x + 5, self.title["rect"].y + 5))
+        self.title["rect"].w = max(100,title_text_surface.get_width() + 10)
 
     # Draw Input Text boxes - inputs by keystrokes
     def draw_input_boxes(self):
         for box in self.input_text_boxes:
-            pygame.draw.rect(self.screen, box["color"], box["rect"], 2)
-            text_surface = self.base_font.render(box["text"], True, (255, 255, 255))
-            self.screen.blit(text_surface, (box["rect"].x + 5, box["rect"].y + 5))
-            box["rect"].w = max(200, text_surface.get_width() + 10)
+            pygame.draw.rect(self.screen,box["color"],box["rect"],2)
+            text_surface = self.base_font.render(box["text"],True,(255, 255, 255))
+            self.screen.blit(text_surface,(box["rect"].x + 5,box["rect"].y + 5))
+            box["rect"].w = max(200,text_surface.get_width() + 10)
     
     # Input Text boxes Event Handler
     def text_handle_event(self,event):
@@ -138,10 +136,10 @@ class FlamesGameBoard:
             
     # Draw Play Button - should be active by mouse click or mouse button down
     def draw_button(self):
-        pygame.draw.rect(self.screen, self.play_button["color"], self.play_button["rect"], 2)
+        pygame.draw.rect(self.screen,self.play_button["color"],self.play_button["rect"],2)
         button_text_surface = self.base_font.render(self.play_button["text"],True,(255,255,255))
-        self.screen.blit(button_text_surface, (self.play_button["rect"].x + 5, self.play_button["rect"].y + 5))
-        self.play_button["rect"].w = max(self.screen.get_width()/3, button_text_surface.get_width() + 10)
+        self.screen.blit(button_text_surface,(self.play_button["rect"].x + 5,self.play_button["rect"].y + 5))
+        self.play_button["rect"].w = max(self.screen.get_width()/3,button_text_surface.get_width() + 10)
 
     # Button event handler
     def button_handle_event(self,event):
@@ -160,8 +158,8 @@ class FlamesGameBoard:
     def draw_final_result_box(self):
         #pygame.draw.rect(self.screen, self.final_result_box["color"], self.final_result_box["rect"], 2)
         button_text_surface = self.base_font.render(self.final_result_box["text"],True,(255,255,255))
-        self.screen.blit(button_text_surface, (self.final_result_box["rect"].x + 5, self.final_result_box["rect"].y + 5))
-        self.final_result_box["rect"].w = max(100, button_text_surface.get_width() + 10)
+        self.screen.blit(button_text_surface,(self.final_result_box["rect"].x + 5,self.final_result_box["rect"].y + 5))
+        self.final_result_box["rect"].w = max(100,button_text_surface.get_width() + 10)
 
 def main_game():
 
